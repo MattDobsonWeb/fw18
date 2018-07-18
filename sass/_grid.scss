@@ -1,0 +1,74 @@
+$col-gap: 0.75em;
+
+.col,
+.col-half,
+.col-quarter,
+.col-three-quarters,
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  position: relative;
+  width: 100%;
+  padding: $col-gap;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$col-gap;
+    margin-right: -$col-gap;
+  }
+
+  .col {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+  .col-quarter {
+    width: 25%;
+    flex: none;
+  }
+
+  .col-half {
+    width: 50%;
+    flex: none;
+  }
+
+  .col-three-quarters {
+    width: 75%;
+    flex: none;
+  }
+
+  @for $i from 1 through 12 {
+    .col-#{$i} {
+      $width: (100%/12 * $i);
+      max-width: $width;
+      flex: 0 0 $width;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}
