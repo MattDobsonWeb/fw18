@@ -1,28 +1,92 @@
-$col-gap: 0.75em;
-
-.col,
-.col-half,
-.col-quarter,
-.col-three-quarters,
-.col-1,
-.col-2,
-.col-3,
-.col-4,
-.col-5,
-.col-6,
-.col-7,
-.col-8,
-.col-9,
-.col-10,
-.col-11,
-.col-12 {
+@mixin default-col {
   position: relative;
   width: 100%;
   padding: $col-gap;
 }
 
+// Defaults
+.col,
+.col-quarter,
+.col-third,
+.col-half,
+.col-two-thirds,
+.col-three-quarters,
+.col-full {
+  @include default-col();
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    @include default-col();
+  }
+}
+
+// Defualt Mobile
+.col-mobile-quarter,
+.col-mobile-third,
+.col-mobile-half,
+.col-mobile-two-thirds,
+.col-mobile-three-quarters,
+.col-mobile-full {
+  @include default-col();
+}
+
+@for $i from 1 through 12 {
+  .col-mobile-#{$i} {
+    @include default-col();
+  }
+}
+
+// Default Tablet
+.col-tablet-quarter,
+.col-tablet-third,
+.col-tablet-half,
+.col-tablet-two-thirds,
+.col-tablet-three-quarters,
+.col-tablet-full {
+  @include default-col();
+}
+
+@for $i from 1 through 12 {
+  .col-tablet-#{$i} {
+    @include default-col();
+  }
+}
+
+// Desktop Defaults
+.col-desktop-quarter,
+.col-desktop-third,
+.col-desktop-half,
+.col-desktop-two-thirds,
+.col-desktop-three-quarters,
+.col-desktop-full {
+  @include default-col();
+}
+
+@for $i from 1 through 12 {
+  .col-desktop-#{$i} {
+    @include default-col();
+  }
+}
+
+// Large Defaults
+.col-large-quarter,
+.col-large-third,
+.col-large-half,
+.col-large-two-thirds,
+.col-large-three-quarters,
+.col-large-full {
+  @include default-col();
+}
+
+@for $i from 1 through 12 {
+  .col-large-#{$i} {
+    @include default-col();
+  }
+}
+
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+@media (min-width: $mobile) {
   .row {
     display: flex;
     flex-wrap: wrap;
@@ -42,13 +106,58 @@ $col-gap: 0.75em;
     flex: none;
   }
 
+  .col-mobile-quarter {
+    width: 25%;
+    flex: none;
+  }
+
   .col-half {
+    width: 50%;
+    flex: none;
+  }
+
+  .col-mobile-half {
     width: 50%;
     flex: none;
   }
 
   .col-three-quarters {
     width: 75%;
+    flex: none;
+  }
+
+  .col-mobile-three-quarters {
+    width: 75%;
+    flex: none;
+  }
+
+  .col-full {
+    width: 100%;
+    flex: none;
+  }
+
+  .col-mobile-full {
+    width: 100%;
+    flex: none;
+  }
+
+  .col-third {
+    width: (100%/3);
+    flex: none;
+  }
+
+  .col-mobile-third {
+    width: (100%/3);
+    flex: none;
+  }
+
+  .col-two-thirds {
+    width: (100% /3 * 2);
+    flex: none;
+  }
+
+  .col-mobile-two-thirds {
+    width: (100% /3 * 2);
     flex: none;
   }
 
@@ -59,16 +168,142 @@ $col-gap: 0.75em;
       flex: 0 0 $width;
     }
   }
+
+  @for $i from 1 through 12 {
+    .col-mobile-#{$i} {
+      $width: (100%/12 * $i);
+      max-width: $width;
+      flex: 0 0 $width;
+    }
+  }
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
+@media (min-width: $tablet) {
+  // 12 col
+  @for $i from 1 through 12 {
+    .col-tablet-#{$i} {
+      $width: (100%/12 * $i);
+      max-width: $width;
+      flex: 0 0 $width;
+    }
+  }
+
+  // Quarters
+  .col-tablet-quarter {
+    width: 25%;
+    flex: none;
+  }
+
+  .col-tablet-half {
+    width: 50%;
+    flex: none;
+  }
+
+  .col-tablet-three-quarters {
+    width: 75%;
+    flex: none;
+  }
+
+  .col-tablet-full {
+    width: 100%;
+    flex: none;
+  }
+
+  // Thirds
+  .col-tablet-third {
+    width: (100%/3);
+    flex: none;
+  }
+
+  .col-tablet-two-thirds {
+    width: (100%/3 * 2);
+    flex: none;
+  }
 }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
+@media (min-width: $desktop) {
+  @for $i from 1 through 12 {
+    .col-desktop-#{$i} {
+      $width: (100%/12 * $i);
+      max-width: $width;
+      flex: 0 0 $width;
+    }
+  }
+
+  // Quarters
+  .col-desktop-quarter {
+    width: 25%;
+    flex: none;
+  }
+
+  .col-desktop-half {
+    width: 50%;
+    flex: none;
+  }
+
+  .col-desktop-three-quarters {
+    width: 75%;
+    flex: none;
+  }
+
+  .col-desktop-full {
+    width: 100%;
+    flex: none;
+  }
+
+  // Thirds
+  .col-desktop-third {
+    width: (100%/3);
+    flex: none;
+  }
+
+  .col-desktop-two-thirds {
+    width: (100%/3 * 2);
+    flex: none;
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
+@media (min-width: $large-desktop) {
+  @for $i from 1 through 12 {
+    .col-large-#{$i} {
+      $width: (100%/12 * $i);
+      max-width: $width;
+      flex: 0 0 $width;
+    }
+  }
+
+  // Quarters
+  .col-large-quarter {
+    width: 25%;
+    flex: none;
+  }
+
+  .col-large-half {
+    width: 50%;
+    flex: none;
+  }
+
+  .col-large-three-quarters {
+    width: 75%;
+    flex: none;
+  }
+
+  .col-large-full {
+    width: 100%;
+    flex: none;
+  }
+
+  // Thirds
+  .col-large-third {
+    width: (100%/3);
+    flex: none;
+  }
+
+  .col-large-two-thirds {
+    width: (100%/3 * 2);
+    flex: none;
+  }
 }
